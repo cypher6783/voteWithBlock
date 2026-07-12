@@ -1,0 +1,7 @@
+target/*
+!target/*.jar
+.mvn
+*.iml
+.idea
+.classpath
+.project

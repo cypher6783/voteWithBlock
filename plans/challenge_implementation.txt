@@ -1,0 +1,9 @@
+// Exact implementation of challenge creation from preAuthToken in BiometricChallengeController
+String token = preAuthToken.startsWith("Bearer ") ? preAuthToken.substring(7) : preAuthToken;
+if (!sessionTokenService.validateToken(token)) {
+    return ResponseEntity.status(401).build();
+}
+String challenge = Base64.getEncoder()
+        .encodeToString(UUID.randomUUID().toString().getBytes());
+challengeStore.put(token, challenge);
+return ResponseEntity.ok(new BiometricChallengeResponse(challenge));

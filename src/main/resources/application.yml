@@ -1,0 +1,4 @@
+app:
+  jwtSecret: your-base64-encoded-secret-key-here-minimum-32-characters
+  jwtExpirationMs: 86400000
+  encryptionKey: your-base64-encoded-encryption-key-here-32-bytes

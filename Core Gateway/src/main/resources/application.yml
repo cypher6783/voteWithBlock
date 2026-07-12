@@ -1,0 +1,76 @@
+spring:
+  application:
+    name: core-gateway
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5433/voting_db}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    hikari:
+      maximum-pool-size: ${HIKARI_MAXIMUM_POOL_SIZE:20}
+      minimum-idle: ${HIKARI_MINIMUM_IDLE:5}
+      connection-timeout: ${HIKARI_CONNECTION_TIMEOUT:30000}
+      idle-timeout: ${HIKARI_IDLE_TIMEOUT:600000}
+      max-lifetime: ${HIKARI_MAX_LIFETIME:1800000}
+      leak-detection-threshold: ${HIKARI_LEAK_DETECTION:60000}
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:validate}
+    show-sql: ${SPRING_JPA_SHOW_SQL:false}
+    open-in-view: false
+
+services:
+  python-ai:
+    url: ${SERVICES_PYTHON_AI_URL:http://localhost:8000/verify-liveness}
+  fabric:
+    network-config-path: src/main/resources/network-config.json
+    msp-id: Org1MSP
+    channel-name: voting-channel
+    chaincode-name: VotingContract
+
+app:
+  admin:
+    token-secret: ${APP_ADMIN_TOKEN_SECRET:}
+    bootstrap:
+      enabled: ${APP_ADMIN_BOOTSTRAP_ENABLED:false}
+      username: ${APP_ADMIN_BOOTSTRAP_USERNAME:}
+      password: ${APP_ADMIN_BOOTSTRAP_PASSWORD:}
+  cors:
+    allowed-origins: ${APP_CORS_ALLOWED_ORIGINS:http://localhost:3000}
+  auth:
+    session-secret: ${APP_AUTH_SESSION_SECRET:}
+    pre-auth-secret: ${APP_AUTH_PREAUTH_SECRET:}
+    session-ttl-seconds: ${APP_AUTH_SESSION_TTL_SECONDS:900}
+    allow-bootstrap-password: ${APP_AUTH_ALLOW_BOOTSTRAP_PASSWORD:false}
+    bootstrap-password: ${APP_AUTH_BOOTSTRAP_PASSWORD:}
+  validation:
+    allowed-election-ids: ${APP_ALLOWED_ELECTION_IDS:elect-2026}
+    allowed-candidate-ids: ${APP_ALLOWED_CANDIDATE_IDS:cand-1,cand-2,cand-3,cand-4}
+  rate-limit:
+    max-attempts: ${APP_RATE_LIMIT_MAX_ATTEMPTS:12}
+    window-seconds: ${APP_RATE_LIMIT_WINDOW_SECONDS:60}
+  biometric:
+    encryption-key: ${APP_BIOMETRIC_ENCRYPTION_KEY:}
+    similarity-threshold: ${APP_BIOMETRIC_SIMILARITY_THRESHOLD:0.82}
+    model-version: ${APP_BIOMETRIC_MODEL_VERSION:arcface-r00-v1}
+    challenge-ttl-seconds: ${APP_BIOMETRIC_CHALLENGE_TTL:90}
+    pre-auth-ttl-seconds: ${APP_BIOMETRIC_PRE_AUTH_TTL:120}
+  demo:
+    seed-voter: ${APP_DEMO_SEED_VOTER:true}
+    national-id: ${APP_DEMO_NATIONAL_ID:US-98420-A}
+    password: ${APP_DEMO_PASSWORD:}
+  configuration:
+    version: ${APP_CONFIG_VERSION:1.0.0}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: when_authorized
+  info:
+    env:
+      enabled: false

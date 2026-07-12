@@ -1,0 +1,19 @@
+{
+  "agent_profiles": {
+    "nemotron-autonomous-coder": {
+      "provider": "openai-compatible",
+      "api_base_url": "https://openrouter.ai/api/v1", 
+      "api_key": "ENV_OPENROUTER_API_KEY",
+      "model_id": "nvidia/nemotron-3-super-120b-a12b:free",
+      "capabilities": {
+        "file_system_write": true,
+        "terminal_execution": true,
+        "browser_automation": true
+      },
+      "agent_loop": {
+        "max_iterations_per_task": 25,
+        "auto_approve_safe_commands": false
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+out
+build
+.env*
+npm-debug.log*
+node_modules
+.next

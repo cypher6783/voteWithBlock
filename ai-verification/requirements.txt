@@ -1,0 +1,10 @@
+fastapi>=0.110.0
+uvicorn>=0.28.0
+pydantic>=2.6.4
+numpy>=1.26.4
+insightface>=0.7.3
+onnxruntime>=1.17.0
+scipy>=1.12.0
+opencv-python-headless>=4.8.0
+# Explicitly prevent full opencv-python (requires GUI libs not available in slim image)
+opencv-python==0.0.0; sys_platform == "never"

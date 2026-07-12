@@ -1,0 +1,17 @@
+# Election & Candidate Management — Audit & Review Checklist
+
+- [x] Vote architecture reviewed (Verified `VoteController` and `InputValidationService` reliance on hardcoded config)
+- [x] Blockchain integration reviewed (Verified `VotingLedgerService` interactions and transaction payload structure)
+- [x] Existing entities reviewed (Verified `VoterAccount` and replay protection mechanism)
+- [x] Existing admin architecture reviewed (Verified `AdminRole`, `AdminActionLog`, and Spring Security filter chain)
+- [x] Election domain model defined (Schema detailed in plan)
+- [x] Candidate domain model defined (Schema detailed in plan)
+- [x] Freeze rules defined (Enforced at the Service layer for `OPEN` status)
+- [x] Role matrix defined (SUPER_ADMIN, ELECTION_ADMIN, AUDITOR mapped to specific actions)
+- [x] Blockchain result strategy defined (Hyperledger as sole source of truth; no DB split-brain)
+- [x] API design defined (Admin CRUD paths and Public Active paths outlined)
+- [x] Frontend architecture defined (Dynamic fetching in `BallotScreen.tsx`, Next.js `/app/admin` routes)
+- [x] Database changes defined (V3 migration script)
+- [x] Audit architecture defined (Integration with `AdminActionLog`)
+- [x] Image storage architecture defined (`CandidateImageStorageService` interface with `LocalStorageProvider` and future `S3StorageProvider`)
+- [x] Findings backed by repository evidence (Documented in `election-management-evidence.md`)

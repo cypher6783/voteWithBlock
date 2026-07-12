@@ -1,0 +1,14 @@
+package com.votewithblock.gateway.model;
+
+public enum SecurityEventType {
+    FAILED_LOGIN,
+    FAILED_ADMIN_LOGIN,
+    RATE_LIMIT,
+    ACCOUNT_LOCKOUT,
+    TOKEN_REVOKED,
+    BIOMETRIC_FAILURE,
+    BIOMETRIC_REENROLLMENT,
+    SUSPICIOUS_ACTIVITY,
+    FABRIC_FAILURE,
+    SYSTEM_ERROR
+}
