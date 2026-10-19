@@ -7,3 +7,5 @@ export const AUTH_LOGIN_URL = `${CORE_GATEWAY_URL}/api/auth/login`;
 export const AUTH_BIOMETRIC_CHALLENGE_URL = `${CORE_GATEWAY_URL}/api/auth/biometric-challenge`;
 export const AUTH_BIOMETRIC_CONFIRM_URL = `${CORE_GATEWAY_URL}/api/auth/biometric-confirm`;
 export const VOTE_CAST_URL = `${CORE_GATEWAY_URL}/api/vote/cast`;
+export const ELECTIONS_ACTIVE_URL = `${CORE_GATEWAY_URL}/api/elections/active`;
+export const ADMIN_ELECTIONS_URL = `${CORE_GATEWAY_URL}/api/admin/elections`;

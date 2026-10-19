@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { CheckCircle2, Lock, User, Clock, ChevronDown, ChevronUp, AlertCircle, Loader2 } from "lucide-react";
 import axios from "axios";
-import { VOTE_CAST_URL } from "@/lib/api";
+import { VOTE_CAST_URL, ELECTIONS_ACTIVE_URL } from "@/lib/api";
 
 interface Candidate {
   id: string;
@@ -35,7 +35,7 @@ export default function BallotScreen({ onProceed, voterId, sessionToken }: Ballo
   useEffect(() => {
     const fetchActiveElection = async () => {
       try {
-        const response = await axios.get("/api/elections/active");
+        const response = await axios.get(ELECTIONS_ACTIVE_URL);
         if (response.status === 204 || !response.data) {
           setErrorMsg("No active election is currently open for voting.");
           setIsLoading(false);
